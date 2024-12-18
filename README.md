@@ -1,1 +1,1 @@
-# test_task_in_introvert
+Тестовое задание в компанию "Интроверт" на позицию Junior Frontend-разработчик Angular.
