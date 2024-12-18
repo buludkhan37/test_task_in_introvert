@@ -1,0 +1,69 @@
+.dropdown {
+  position: relative;
+  width: 300px;
+
+  // Стили для кнопки, открывающей список
+  .dropdown-toggle {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  // Стили для выпадающего списка
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+
+    // Заголовки категорий
+    .funnel-header {
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: #f3f3f3;
+
+      input {
+        margin-right: 10px;
+      }
+
+      &.disabled {
+        color: #aaa;
+        cursor: not-allowed;
+        background-color: #f9f9f9;
+      }
+    }
+
+    // Стили для этапов внутри категорий
+    .funnel-stages {
+      padding-left: 20px;
+
+      div {
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        cursor: pointer;
+
+        input {
+          margin-right: 10px;
+        }
+
+        // Цвета для разных статусов
+        &.blue { background-color: #e6f3ff; } // Неразобранное
+        &.yellow { background-color: #fff9c4; } // Переговоры
+        &.orange { background-color: #ffe0b2; } // Принимают решение
+        &.green { background-color: #d9f7be; } // Успешно
+      }
+    }
+  }
+}

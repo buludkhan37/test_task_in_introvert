@@ -1,0 +1,42 @@
+<div class="dropdown">
+  <div class="dropdown-toggle" (click)="toggleDropdown()">
+    <span>Выбрано: {{ selectedCounts }}</span>
+  </div>
+  <div *ngIf="isDropdownOpen" class="dropdown-menu">
+    <!-- Категории -->
+    <div *ngFor="let funnel of funnels">
+      <div
+        class="funnel-header"
+        [class.disabled]="funnel.disabled"
+        (click)="!funnel.disabled && toggleFunnel(funnel)"
+      >
+        <input
+          type="checkbox"
+          [(ngModel)]="funnel.selected"
+          [disabled]="funnel.disabled"
+          (change)="onFunnelChange()"
+        />
+        {{ funnel.name }}
+      </div>
+      <!-- Этапы внутри категорий -->
+      <div *ngIf="funnel.isOpen" class="funnel-stages">
+        <div
+          *ngFor="let stage of funnel.stages"
+          [ngClass]="{
+            'blue': stage.name === 'Неразобранное',
+            'yellow': stage.name === 'Переговоры',
+            'orange': stage.name === 'Принимают решение',
+            'green': stage.name === 'Успешно'
+          }"
+        >
+          <input
+            type="checkbox"
+            [(ngModel)]="stage.selected"
+            (change)="onStageChange()"
+          />
+          {{ stage.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
